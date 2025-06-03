@@ -12,7 +12,7 @@ set(BOOST_USE_WINAPI_VERSION "" CACHE STRING "Target Windows API version for Boo
 add_library(boost_winapi INTERFACE)
 add_library(Boost::winapi ALIAS boost_winapi)
 
-target_include_directories(boost_winapi INTERFACE include)
+target_include_directories(boost_winapi INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 if ((WIN32 OR CYGWIN) AND BOOST_USE_WINAPI_VERSION)
     message(STATUS "Setting BOOST_USE_WINAPI_VERSION to ${BOOST_USE_WINAPI_VERSION}")
